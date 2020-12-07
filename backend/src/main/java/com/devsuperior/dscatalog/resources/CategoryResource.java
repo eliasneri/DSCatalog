@@ -1,26 +1,6 @@
-/* 	 ESTA CLASSE IRÁ DISPONIBILIZAR UM CONTROLADOR REST
-	 * SERÁ DISPONIBILIZADO ESTE RECURSO.
-	 * E É O QUE FARÁ A COMUNICAÇÃO ENTRE O FRONT WEB / FRONT MOBILE
-	 * COM A APLICAÇÃO BACK END!
-	 * 
-	 * ESTA CLASSE É UM RECURSO DA ENTIDADE 'CATEGORY'
-	 * 
-	 * TODO CONTROLADOR PRECISA COLOCAR A ANOTAÇÃO NO INICIO
-	 * DA CLASSE @RestController
-	 * @RestController, vai efetuar um processamento ao compilar esta classe
-	 * e será disponibilizado como recurso
-	 * 
-	 * o SPRING BOOT utiliza muitas anotações.
-	 * 
-	 * @RequestMapping(value="") --> é a rota REST do meu recurso
-	 * uma boa prática usar o nome do recurso no plural: "categories"
-	 * 
-	 */
-
 package com.devsuperior.dscatalog.resources;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.devsuperior.dscatalog.dto.CategoryDTO;
-import com.devsuperior.dscatalog.entities.Category;
 import com.devsuperior.dscatalog.services.CategoryService;
 
 @RestController
@@ -47,7 +26,8 @@ public class CategoryResource {
 		}
 		
 		@GetMapping(value="{id}")
-		public ResponseEntity<Optional<Category>> findById (@PathVariable Long id){
-			return ResponseEntity.ok().body(service.findById(id));
+		public ResponseEntity<CategoryDTO> findById (@PathVariable Long id){
+			CategoryDTO dto = service.findById(id);
+			return ResponseEntity.ok().body(dto);
 		}
 }

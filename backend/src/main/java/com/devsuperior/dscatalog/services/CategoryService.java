@@ -26,9 +26,14 @@ public class CategoryService {
 		return listDTO;
 	}
 	
-	
-	public Optional<Category> findById(Long id) {
-		return repository.findById(id);
+	@Transactional(readOnly = true)
+	public CategoryDTO findById(Long id) {
+		Optional<Category> obj = repository.findById(id);
+		Category entity = obj.get();
+		return new CategoryDTO(entity);
+		
+		
+		
 	}
 
 }
