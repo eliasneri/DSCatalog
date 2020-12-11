@@ -31,10 +31,7 @@ public class CategoryService {
 	public CategoryDTO findById(Long id) {
 		Optional<Category> obj = repository.findById(id);
 		Category entity = obj.orElseThrow(() -> new EntityNotFoundException("Entity Not Found!!"));
-		return new CategoryDTO(entity);
-		
-		
-		
+		return new CategoryDTO(entity);	
 	}
 
 	@Transactional
@@ -44,6 +41,17 @@ public class CategoryService {
 		  entity = repository.save(entity);
 		  return new CategoryDTO(entity);
 		
+	}
+
+	@Transactional
+	public CategoryDTO update(Long id, CategoryDTO dto) {
+		Category entity = repository.getOne(id);
+		entity.setName(dto.getName());
+		entity = repository.save(entity);
+		return new CategoryDTO(entity);
+		
+		
+		return null;
 	}
 
 }
