@@ -28,7 +28,6 @@ public class CategoryService {
 	public List<CategoryDTO> findAll() {
 		List<Category> list = repository.findAll();
 		List<CategoryDTO> listDTO = list.stream().map(x -> new CategoryDTO(x)).collect(Collectors.toList());
-						
 		return listDTO;
 	}
 	
@@ -59,8 +58,7 @@ public class CategoryService {
 		catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Id Not Found!!" + id);
 		}
-		
-			
+	
 	}
 
 	
@@ -75,9 +73,7 @@ public class CategoryService {
 		
 		catch (DataIntegrityViolationException e) {
 			throw new DatabaseException("Integrity Violation!!");
-
 		}
-		
 			}
 
 }
