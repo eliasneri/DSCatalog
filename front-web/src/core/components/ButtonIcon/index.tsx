@@ -1,11 +1,22 @@
 import React from 'react';
 import './styles.scss'
+import { ReactComponent as ArrowIcon } from '../../assets/images/arrow.svg';
 
-const ButtonIcon = () => (
-    <button className="btn btn-primary btn-icon">
-        <h5>inicie agora a sua busca</h5>
+type Props = {
+    text: string;
+}
 
-    </button>
+const ButtonIcon = ({text}: Props) => (
+    <div className="d-flex">
+        <button className="btn btn-primary btn-icon">
+            <h5> {text} </h5>
+        </button>
+        <div className="btn-icon-content">
+            <ArrowIcon />
+        </div>
+    
+    </div>
+
 
 );
 
