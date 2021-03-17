@@ -17,6 +17,11 @@ const ProductDetails = () => {
                     <ArrowIcon className="icon-goback"/>
                     <h1 className="text-goback">voltar</h1>
                 </Link>
+                <div className="row">
+                    <div className="col-6 bg-primary">coluna 1
+
+                    </div>
+                </div>
             </div>
             
         </div>
