@@ -1,6 +1,8 @@
 package com.devsuperior.dscatalog.dto;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.devsuperior.dscatalog.entities.User;
 
@@ -11,17 +13,19 @@ public class UserDTO implements Serializable {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String password;
+
+	
+	Set<RoleDTO> roles = new HashSet<>();
 	
 	public UserDTO() {
 	}
 
-	public UserDTO(Long id, String firstName, String lastName, String email, String password) {
+	public UserDTO(Long id, String firstName, String lastName, String email) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.password = password;
+	
 	}
 	
 	public UserDTO(User entity) {
@@ -29,7 +33,6 @@ public class UserDTO implements Serializable {
 		firstName = entity.getFirstName();
 		lastName = entity.getLastName();
 		email = entity.getEmail();
-		password = entity.getPassword();
 		
 	}
 
@@ -57,16 +60,13 @@ public class UserDTO implements Serializable {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public Long getId() {
 		return id;
+	}
+	
+	
+	public Set<RoleDTO> getRoles() {
+		return roles;
 	}
 
 	@Override
